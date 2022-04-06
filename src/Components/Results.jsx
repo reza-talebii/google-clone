@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import { useResultContext } from "../Context/store";
 
 const Results = () => {
-  const { getResults } = useResultContext();
-
-  useEffect(() => {
-    getResults("search/q=elon+musk");
-  }, [getResults]);
+  const { pathname } = useLocation();
+  const { er, getResults } = useResultContext();
 
   return <div>Results</div>;
 };
