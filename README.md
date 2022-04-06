@@ -3,6 +3,7 @@
 ![Goggl](https://i.ibb.co/yQdYhtq/image.png)
 
 ## Introduction
+A simple google search clone 
 
 Setup:
 
