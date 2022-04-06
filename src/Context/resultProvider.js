@@ -7,6 +7,7 @@ const ResultProvider = ({ children }) => {
   const [result, setResult] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [searchTherm, setSearchTherm] = useState("Elon Musk");
 
   //fetch data in api
   const getResults = async (type) => {
@@ -40,7 +41,16 @@ const ResultProvider = ({ children }) => {
   };
 
   return (
-    <store.Provider value={{ result, error, loading, getResults }}>
+    <store.Provider
+      value={{
+        result,
+        error,
+        loading,
+        getResults,
+        searchTherm,
+        setSearchTherm,
+      }}
+    >
       {children}
     </store.Provider>
   );
