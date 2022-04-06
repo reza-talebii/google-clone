@@ -2,6 +2,8 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
+import { Search } from "./";
+
 //tailwindcss styles
 const styles = {
   wrapper:
@@ -18,16 +20,18 @@ const Navbar = ({ setDarkMode, darkMode }) => {
     <section className={styles.wrapper}>
       <nav className={styles.navStyle}>
         <Link to="/">
-          <p className={styles.googleLink}>Google</p>
+          <p className={styles.googleLink}>Google 🔍</p>
         </Link>
 
         <button
           className={styles.btnMod}
           onClick={() => setDarkMode(() => !darkMode)}
         >
-          {darkMode ? "Light" : "Dark"}
+          {darkMode ? "Light 💡" : "Dark 🌙"}
         </button>
       </nav>
+
+      <Search />
     </section>
   );
 };
