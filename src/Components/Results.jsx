@@ -3,9 +3,13 @@ import { useLocation } from "react-router-dom";
 
 import { useResultContext } from "../Context/store";
 
+import { Loading } from "./";
+
 const Results = () => {
   const { pathname } = useLocation();
-  const { er, getResults } = useResultContext();
+  const { result, error, loading, getResultsts } = useResultContext();
+
+  if (true) return <Loading />;
 
   return <div>Results</div>;
 };
