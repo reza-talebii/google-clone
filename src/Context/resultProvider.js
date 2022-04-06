@@ -13,18 +13,28 @@ const ResultProvider = ({ children }) => {
     setLoading(true);
     setError(false);
 
-    const res = await fetch(`${BASE_URL}/${type}`, {
-      method: "GET",
-      headers: {
-        "X-User-Agent": "desktop",
-        "X-Proxy-Location": "EU",
-        "X-RapidAPI-Host": "google-search3.p.rapidapi.com",
-        "X-RapidAPI-Key": "438453db08msh13e95ef36bcb8fbp104745jsnc8f8ac4aa394",
-      },
-    });
-    const data = await res.json();
+    try {
+      const res = await fetch(`${BASE_URL}${type}`, {
+        method: "GET",
+        headers: {
+          "X-User-Agent": "desktop",
+          "X-Proxy-Location": "EU",
+          "X-RapidAPI-Host": "google-search3.p.rapidapi.com",
+          "X-RapidAPI-Key":
+            "438453db08msh13e95ef36bcb8fbp104745jsnc8f8ac4aa394",
+        },
+      });
+      const data = await res.json();
 
-    res.ok ? setResult(data) : setError(res.statusText);
+      //----
+      type.includes("/news")
+        ? setResult(data.entries)
+        : type.includes("/images")
+        ? setResult(data.image_results)
+        : setResult(data);
+    } catch (error) {
+      setError(error.message);
+    }
 
     setLoading(false);
   };

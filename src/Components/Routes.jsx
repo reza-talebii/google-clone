@@ -7,12 +7,12 @@ const Routes = () => {
   return (
     <section className="p-4">
       <RouteWarper>
+        <Route path="*" element={<p>not page found</p>} />
         <Route path="/" element={<Navigate replace to="/search" />} />
         <Route path="/search" element={<Results />} />
-        <Route path="/images" element={<Results />} />
+        <Route path="/image" element={<Results />} />
         <Route path="/video" element={<Results />} />
         <Route path="/news" element={<Results />} />
-        <Route path="*" element={<Results />} />
       </RouteWarper>
     </section>
   );

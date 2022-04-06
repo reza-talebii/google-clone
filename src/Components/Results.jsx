@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import ReactPlayer from "react-player";
 
 import { useResultContext } from "../Context/store";
 
@@ -17,7 +18,7 @@ const Results = () => {
   const { result, error, loading, getResults } = useResultContext();
 
   useEffect(() => {
-    // getResults(`${pathname}/q=tesla&num=20`);
+    // getResults(`${pathname}/q=Elon Musk&num=20`);
   }, []);
 
   if (loading) return <Loading />;
@@ -56,12 +57,25 @@ const Results = () => {
       );
       break;
 
-    case "/videos":
-      return <div className={styles.searchContainer}></div>;
+    case "/video":
+      return (
+        <div className="flex flex-wrap justify-center">
+          {result?.results?.map((video, index) => (
+            <div key={index} className="p-2">
+              <ReactPlayer
+                url={video.additional_links[0].href}
+                controls
+                width="355px"
+                height="200px"
+              />
+            </div>
+          ))}
+        </div>
+      );
       break;
 
     default:
-      <Error massage="not found" />;
+      <p>not found pa2ge</p>;
       break;
   }
 };
