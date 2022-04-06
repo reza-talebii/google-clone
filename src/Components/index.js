@@ -8,3 +8,4 @@ export { default as SearchResult } from "./SearchResult";
 export { default as Error } from "./Error";
 export { default as ImageResult } from "./ImageResult";
 export { default as NewsResult } from "./NewsResult";
+export { default as Links } from "./Links";

@@ -1,32 +1,29 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
+const links = [
+  { url: "/search", text: "🔎 All" },
+  { url: "/news", text: "📰 News" },
+  { url: "/image", text: "📸 Images" },
+  { url: "/video", text: "📺 Videos" },
+];
 
 const Links = () => {
   return (
-    <ul class="flex justify-between">
-      <li class="mr-3">
-        <a
-          class="inline-block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white"
-          href="#"
+    <ul className="flex justify-center items-center mt-4 w-full">
+      {links.map(({ url, text }, index) => (
+        <NavLink
+          key={index}
+          to={url}
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-700 border-b-2 dark:text-blue-300 border-blue-700 pb-2"
+              : "px-5"
+          }
         >
-          Active Pill
-        </a>
-      </li>
-      <li class="mr-3">
-        <a
-          class="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
-          href="#"
-        >
-          Pill
-        </a>
-      </li>
-      <li class="mr-3">
-        <a
-          class="inline-block py-2 px-4 text-gray-400 cursor-not-allowed"
-          href="#"
-        >
-          Disabled Pill
-        </a>
-      </li>
+          {text}
+        </NavLink>
+      ))}
     </ul>
   );
 };

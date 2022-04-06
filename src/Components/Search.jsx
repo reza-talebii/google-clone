@@ -1,7 +1,13 @@
 import React from "react";
 
+import { Links } from "./";
+
 const Search = () => {
-  return <div>Search</div>;
+  return (
+    <>
+      <Links />
+    </>
+  );
 };
 
 export default Search;
