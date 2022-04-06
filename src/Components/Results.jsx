@@ -3,10 +3,11 @@ import { useLocation } from "react-router-dom";
 
 import { useResultContext } from "../Context/store";
 
-import { Loading, SearchResult } from "./";
+import { Loading, SearchResult, Error } from "./";
 
 const styles = {
   searchContainer: "flex flex-wrap justify-between space-y-6 sm:px-56",
+  imagesContainer: "flex flex-wrap justify-center items-center",
 };
 
 const Results = () => {
@@ -18,7 +19,7 @@ const Results = () => {
   }, []);
 
   if (loading) return <Loading />;
-  if (error) return <p>{error}</p>;
+  if (error) return <Error message={error} />;
 
   switch (pathname) {
     case "/search":
@@ -29,6 +30,18 @@ const Results = () => {
           ))}
         </div>
       );
+      break;
+
+    case "/images":
+      return <div className={styles.imagesContainer}>{result.results}</div>;
+      break;
+
+    case "/news":
+      return <div className={styles.searchContainer}></div>;
+      break;
+
+    case "/videos":
+      return <div className={styles.searchContainer}></div>;
       break;
 
     default:
