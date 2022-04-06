@@ -25,8 +25,6 @@ const Results = () => {
   const { result, error, loading, getResults, searchTherm } =
     useResultContext();
 
-  console.log(searchTherm);
-
   useEffect(() => {
     if (searchTherm !== "") {
       getResults(`${pathname}/q=${searchTherm}`);

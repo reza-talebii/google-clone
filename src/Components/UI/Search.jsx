@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
-import { useResultContext } from "../Context/store";
+import { useResultContext } from "../../Context/store";
 
-import { Links } from "./";
+import { Links } from "../";
 
 const Search = () => {
   const [text, setText] = useState("");
   const [debounceValue] = useDebounce(text, 300);
-  const { setSearchTherm } = useResultContext();
+  const { setSearchTherm, setResult } = useResultContext();
 
   useEffect(() => {
-    if (debounceValue) setSearchTherm(debounceValue);
+    setSearchTherm(debounceValue);
   }, [debounceValue]);
 
   return (

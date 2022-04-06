@@ -29,13 +29,10 @@ const ResultProvider = ({ children }) => {
 
       //----
       if (type.includes("/news")) {
-        console.log(type);
         setResult(data.entries);
       } else if (type.includes("/image")) {
-        console.log(type);
         setResult(data.image_results);
       } else {
-        console.log(type);
         setResult(data);
       }
     } catch (error) {
