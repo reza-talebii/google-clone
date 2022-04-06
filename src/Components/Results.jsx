@@ -5,6 +5,10 @@ import { useResultContext } from "../Context/store";
 
 import { Loading, SearchResult } from "./";
 
+const styles = {
+  searchContainer: "flex flex-wrap justify-between space-y-6 sm:px-56",
+};
+
 const Results = () => {
   const { pathname } = useLocation();
   const { result, error, loading, getResults } = useResultContext();
@@ -18,7 +22,13 @@ const Results = () => {
 
   switch (pathname) {
     case "/search":
-      <SearchResult result={result} />;
+      return (
+        <div className={styles.searchContainer}>
+          {result?.results?.map((result, i) => (
+            <SearchResult result={result} key={i} />
+          ))}
+        </div>
+      );
       break;
 
     default:

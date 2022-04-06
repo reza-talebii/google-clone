@@ -4,3 +4,4 @@ export { default as Routes } from "./Routes";
 export { default as Search } from "./Search";
 export { default as Results } from "./Results";
 export { default as Loading } from "./Loading";
+export { default as SearchResult } from "./SearchResult";
