@@ -11,7 +11,7 @@ const ResultProvider = ({ children }) => {
   //fetch data in api
   const getResults = async (type) => {
     setLoading(true);
-    setError(true);
+    setError(false);
 
     const res = await fetch(`${BASE_URL}/${type}`, {
       method: "GET",

@@ -1,17 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 
 import { useResultContext } from "../Context/store";
 
-import { Loading } from "./";
+import { Loading, SearchResult } from "./";
 
 const Results = () => {
   const { pathname } = useLocation();
-  const { result, error, loading, getResultsts } = useResultContext();
+  const { result, error, loading, getResults } = useResultContext();
 
-  if (true) return <Loading />;
+  useEffect(() => {
+    // getResults("search/q=elon+musk");
+  }, []);
 
-  return <div>Results</div>;
+  if (loading) return <Loading />;
+  if (error) return <p>{error}</p>;
+
+  switch (pathname) {
+    case "/search":
+      <SearchResult result={result} />;
+      break;
+
+    default:
+      break;
+  }
 };
 
 export default Results;
