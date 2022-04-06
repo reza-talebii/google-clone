@@ -7,7 +7,7 @@ const ResultProvider = ({ children }) => {
   const [result, setResult] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [searchTherm, setSearchTherm] = useState("Elon Musk");
+  const [searchTherm, setSearchTherm] = useState("");
 
   //fetch data in api
   const getResults = async (type) => {
@@ -28,11 +28,16 @@ const ResultProvider = ({ children }) => {
       const data = await res.json();
 
       //----
-      type.includes("/news")
-        ? setResult(data.entries)
-        : type.includes("/images")
-        ? setResult(data.image_results)
-        : setResult(data);
+      if (type.includes("/news")) {
+        console.log(type);
+        setResult(data.entries);
+      } else if (type.includes("/image")) {
+        console.log(type);
+        setResult(data.image_results);
+      } else {
+        console.log(type);
+        setResult(data);
+      }
     } catch (error) {
       setError(error.message);
     }
@@ -49,6 +54,7 @@ const ResultProvider = ({ children }) => {
         getResults,
         searchTherm,
         setSearchTherm,
+        setResult,
       }}
     >
       {children}

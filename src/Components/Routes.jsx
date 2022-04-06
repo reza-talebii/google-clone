@@ -1,13 +1,13 @@
 import React from "react";
 import { Routes as RouteWarper, Route, Navigate } from "react-router-dom";
 
-import { Results } from "./";
+import { Results, NotFound } from "./";
 
 const Routes = () => {
   return (
-    <section className="p-4">
+    <section className="p-4" style={{ height: "51vh" }}>
       <RouteWarper>
-        <Route path="*" element={<p>not page found</p>} />
+        <Route path="*" element={<NotFound message="Not found page 404" />} />
         <Route path="/" element={<Navigate replace to="/search" />} />
         <Route path="/search" element={<Results />} />
         <Route path="/image" element={<Results />} />

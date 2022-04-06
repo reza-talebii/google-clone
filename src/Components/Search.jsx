@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
+
+import { useResultContext } from "../Context/store";
 
 import { Links } from "./";
 
 const Search = () => {
-  const [text, setText] = useState("e");
+  const [text, setText] = useState("");
+  const [debounceValue] = useDebounce(text, 300);
+  const { setSearchTherm } = useResultContext();
+
+  useEffect(() => {
+    if (debounceValue) setSearchTherm(debounceValue);
+  }, [debounceValue]);
 
   return (
     <div className="relative sm:ml-48 md:ml-72 sm:-mt-10 mt-3">
