@@ -1,5 +1,10 @@
-function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
-}
+import React, { useState } from "react";
+import { Navbar, Footer, Routes } from "./Components";
+
+const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  return <div className={darkMode ? "dark-mode" : ""}></div>;
+};
 
 export default App;
